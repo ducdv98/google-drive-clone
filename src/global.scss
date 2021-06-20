@@ -1,0 +1,35 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.main-container {
+  mat-drawer {
+    width: 256px;
+  }
+
+  .main-content {
+    mat-drawer {
+      width: 328px;
+    }
+  }
+
+}
+
+.main-nav {
+  .mat-expansion-panel-body {
+    padding: 0 0 16px 0;
+  }
+}
+
+.mat-list-base.sidenav-item .mat-list-item .mat-list-item-content {
+  padding: 0 24px;
+}

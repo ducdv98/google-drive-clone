@@ -1,0 +1,18 @@
+.not-implemented {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+
+  .oops-msg {
+    font-size: 48px;
+  }
+
+  img {
+    width: 218px;
+    height: 218px;
+  }
+}

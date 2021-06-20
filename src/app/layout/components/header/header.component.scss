@@ -1,0 +1,27 @@
+.main-heading {
+  height: 48px;
+  padding: 8px;
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: inset 1px 1px 0 rgb(0 0 0 / 10%), inset 0 -1px 0 rgb(0 0 0 / 7%);
+
+  .heading-logo {
+    min-width: 238px;
+    padding-left: 12px;
+
+    a {
+      display: flex;
+      align-items: center;
+    }
+
+    img {
+      width: 40px;
+      height: 40px;
+      margin-right: 4px;
+    }
+
+    .logo-text {
+      font-size: 25px;
+      margin-left: 4px;
+    }
+  }
+}

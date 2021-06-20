@@ -1,0 +1,35 @@
+<nav class="main-nav">
+    <button mat-raised-button class="btn-new">
+        <mat-icon>add</mat-icon>
+        <span>New</span>
+    </button>
+
+    <mat-accordion displayMode="flat" class="expansion-list">
+        <mat-expansion-panel [hideToggle]="true">
+            <mat-expansion-panel-header routerLink="drive/my-drive" routerLinkActive="active">
+                <mat-panel-title>
+                    <mat-icon class="panel-title-icon">add_to_drive</mat-icon>
+                    <div>My Drive</div>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-selection-list [multiple]="false">
+                <mat-list-option *ngFor="let folder of subFolders" [value]="folder" [disableRipple]="true">
+                    <span class="list-sub-item">
+                        <mat-icon>folder_open</mat-icon>
+                       <span>{{folder}}</span>
+                    </span>
+                </mat-list-option>
+            </mat-selection-list>
+        </mat-expansion-panel>
+    </mat-accordion>
+    <mat-selection-list [multiple]="false" class="sidenav-item">
+        <mat-list-option *ngFor="let folder of notImplementedItems" [value]="folder" [disableRipple]="true"
+                         routerLink="{{folder.url}}" routerLinkActive="active">
+                    <span class="list-item">
+                        <mat-icon>{{folder.icon}}</mat-icon>
+                       <span>{{folder.label}}</span>
+                    </span>
+        </mat-list-option>
+    </mat-selection-list>
+    <mat-divider></mat-divider>
+</nav>
