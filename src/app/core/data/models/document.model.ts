@@ -1,3 +1,5 @@
+import { UserModel } from './user.model';
+
 export interface DocumentModel {
   id: number;
   name: string;
@@ -5,10 +7,9 @@ export interface DocumentModel {
   thumbnail: string;
   file?: File | string;
   description: string;
-  fileSizeInBytes: number;
-  lastOpened: string;
-  // createdBy: User;
+  fileSizeInBytes?: number;
+  createdBy: UserModel;
   createdDate: string;
-  // lastModifiedBy: User;
+  lastModifiedBy: UserModel;
   lastModifiedDate: string;
 }

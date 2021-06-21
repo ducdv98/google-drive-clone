@@ -1,0 +1,33 @@
+<div class="items-container h-100">
+    <table mat-table matSort [dataSource]="dataSource" [trackBy]="trackByFn">
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Name</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                {{element.name}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="owner">
+            <mat-header-cell *matHeaderCellDef> Owner</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <span class="mat-caption">{{element.createdBy.name}}</span>
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="lastModified">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Last Modified</mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let element">
+                {{element.lastModifiedDate | date:'mediumDate'}} {{element.lastModifiedBy.name}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="fileSize">
+            <mat-header-cell *matHeaderCellDef> File size</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.fileSizeInBytes}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+    </table>
+</div>

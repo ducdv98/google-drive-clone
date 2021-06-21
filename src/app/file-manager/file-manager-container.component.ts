@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./file-manager-container.component.scss']
 })
 export class FileManagerContainerComponent implements OnInit {
-  detailPanelOpened$!: Observable<boolean>;
+  detailPanelOpened$: Observable<boolean>;
 
   constructor(private store: Store<fromStore.AppState>) {
   }

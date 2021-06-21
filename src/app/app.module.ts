@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { CoreModule } from '@app/core';
 import { LayoutModule } from '@app/layout';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { LayoutModule } from '@app/layout';
 
     CoreModule,
     LayoutModule,
+    FlexLayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

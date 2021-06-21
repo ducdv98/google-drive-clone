@@ -17,6 +17,7 @@
     "@angular/common": "~12.0.4",
     "@angular/compiler": "~12.0.4",
     "@angular/core": "~12.0.4",
+    "@angular/flex-layout": "^12.0.0-beta.34",
     "@angular/forms": "~12.0.4",
     "@angular/material": "^12.0.4",
     "@angular/platform-browser": "~12.0.4",
@@ -27,6 +28,8 @@
     "@ngrx/router-store": "^12.1.0",
     "@ngrx/store": "^12.1.0",
     "@ngrx/store-devtools": "^12.1.0",
+    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"
@@ -48,6 +51,6 @@
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~4.2.4"
+    "typescript": "4.2.4"
   }
 }

@@ -1,4 +1,4 @@
-<nav class="main-nav">
+<nav class="main-nav w-100" fxLayout="column" fxLayoutAlign="start stretch">
     <button mat-raised-button class="btn-new">
         <mat-icon>add</mat-icon>
         <span>New</span>
@@ -14,7 +14,7 @@
             </mat-expansion-panel-header>
             <mat-selection-list [multiple]="false">
                 <mat-list-option *ngFor="let folder of subFolders" [value]="folder" [disableRipple]="true">
-                    <span class="list-sub-item">
+                    <span class="list-sub-item" fxLayout="row" fxLayoutAlign="start center">
                         <mat-icon>folder_open</mat-icon>
                        <span>{{folder}}</span>
                     </span>
@@ -25,7 +25,7 @@
     <mat-selection-list [multiple]="false" class="sidenav-item">
         <mat-list-option *ngFor="let folder of notImplementedItems" [value]="folder" [disableRipple]="true"
                          routerLink="{{folder.url}}" routerLinkActive="active">
-                    <span class="list-item">
+                    <span class="list-item" fxLayout="row" fxLayoutAlign="start center">
                         <mat-icon>{{folder.icon}}</mat-icon>
                        <span>{{folder.label}}</span>
                     </span>

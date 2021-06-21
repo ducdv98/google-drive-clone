@@ -4,7 +4,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
-import { reducers } from './store';
+import { FileManagerEffects, reducers } from './store';
 import { CustomSerializer } from './store';
 import { environment } from '@environment/environment';
 import { RouterModule } from '@angular/router';
@@ -14,7 +14,7 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([FileManagerEffects]),
     StoreRouterConnectingModule.forRoot({ serializer: CustomSerializer }),
 
     RouterModule,

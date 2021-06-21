@@ -1,1 +1,3 @@
-<p>my-drive works!</p>
+<ng-container *ngIf="documents$ | async as documents">
+    <app-list-view [documents]="documents"></app-list-view>
+</ng-container>

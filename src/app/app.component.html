@@ -1,10 +1,10 @@
-<main>
+<main fxLayout="column" fxLayoutAlign="start stretch">
     <app-header></app-header>
-    <mat-drawer-container class="main-container">
+    <mat-drawer-container class="main-container w-100 h-100">
         <mat-drawer mode="side" opened>
             <app-sidebar></app-sidebar>
         </mat-drawer>
-        <mat-drawer-content class="main-content">
+        <mat-drawer-content class="main-content h-100" fxLayout="column" fxLayoutAlign="start none">
             <app-sub-header></app-sub-header>
             <div class="main">
                 <router-outlet></router-outlet>

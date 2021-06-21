@@ -8,6 +8,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatIconModule } from '@angular/material/icon';
 const routes: Routes = [
   {
     path: '',
@@ -60,8 +65,8 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    FileManagerContainerComponent,
     components,
+    FileManagerContainerComponent,
   ],
   imports: [
     CommonModule,
@@ -71,6 +76,11 @@ const routes: Routes = [
     MatFormFieldModule,
     MatOptionModule,
     MatSelectModule,
+    MatCardModule,
+    FlexLayoutModule,
+    MatTableModule,
+    MatSortModule,
+    MatIconModule,
   ],
 })
 export class FileManagerModule {

@@ -9,6 +9,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatLineModule } from '@angular/material/core';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { RouterModule } from '@angular/router';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: components,
@@ -23,6 +24,7 @@ import { RouterModule } from '@angular/router';
     MatLineModule,
     MatExpansionModule,
     RouterModule,
+    FlexLayoutModule,
   ],
   exports: components
 })
