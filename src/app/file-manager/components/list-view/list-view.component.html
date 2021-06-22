@@ -1,9 +1,10 @@
-<div class="items-container h-100">
-    <table mat-table matSort [dataSource]="dataSource" [trackBy]="trackByFn">
+<div class="list-container h-100 dropable-root" [attr.data-folder-id]="'root'">
+    <mat-table matSort [dataSource]="dataSource" [trackBy]="trackByFn" class="clickable">
         <ng-container matColumnDef="name">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Name</mat-header-cell>
-            <mat-cell *matCellDef="let element">
-                {{element.name}}
+            <mat-cell *matCellDef="let element" fxLayout="row" fxLayoutGap="12px">
+                <img draggable="false" src="assets/icon-files-types/{{element.iconType}}.svg" width="20" height="20">
+                <span>{{element.name}}</span>
             </mat-cell>
         </ng-container>
 
@@ -27,7 +28,25 @@
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        <mat-row *matRowDef="let row; columns: displayedColumns; let i = index"
+                 appDragGhost
+                 [content]="row.name"
+                 [type]="row.iconType"
+                 [countFiles]="multiFiles.length"
+
+                 [attr.data-folder-id]="row.id"
+                 [ngClass]="{
+             'item-selected': selectedDocumentId === row.id && !multiFiles.includes(row),
+             'dropable': row.type === DocumentType.FOLDER,
+             'file-dragged': filesDragging && filesDragging.includes(row),
+             'select-multi': multiFiles.includes(row)
+             }"
+                 (click)="onOpenAttachmentDetails(row, i, $event)"
+                 (dblclick)="onOpenPreviewAttachment(row)"
+                 (contextmenu)="onContextMenu($event, row);"
+                 [draggable]="true"
+                 (dragstart)="onDragStartFile($event, row)"
+                 (dragend)="onDragEnd()">
         </mat-row>
-    </table>
+    </mat-table>
 </div>

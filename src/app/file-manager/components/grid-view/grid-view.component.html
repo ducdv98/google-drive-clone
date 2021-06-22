@@ -1,1 +1,38 @@
-<p>grid-view works!</p>
+<div class="dropable-root h-100 grid-container">
+    <mat-grid-list cols="4" rowHeight="180px" gutterSize="20px" class="grid-container">
+        <ng-container *ngFor="let document of documents; let i = index; trackBy: trackByFn">
+            <div (contextmenu)="onContextMenu($event, document)"
+                 [ngClass]="{ 'item-selected': selectedDocumentId === document.id && !multiFiles.includes(document)}"
+                 (click)="onOpenAttachmentDetails(document, i, $event)"
+                 (dblclick)="onOpenPreviewAttachment(document)"
+
+                 appDragGhost
+                 [content]="document.name"
+                 [type]="document.iconType"
+                 [countFiles]="multiFiles.length"
+
+                 [draggable]="document.type !== DocumentType.FOLDER"
+                 (dragstart)="onDragStartFile($event, document)"
+                 (dragend)="onDragEnd()">
+                <mat-grid-tile fxLayout="column" class="grid-item clickable"
+                               fxLayoutAlign="none center"
+                               [attr.data-folder-id]="document.id"
+                               [ngClass]="{'dropable': document.type === DocumentType.FOLDER,
+                      'file-dragged': filesDragging && filesDragging.includes(document),
+                      'select-multi': multiFiles.includes(document)}">
+                    <div class="thumbnail" *ngIf="document.type === DocumentType.FILE"
+                         [style.background-image]="'url(' + document.thumbnail + ')'">
+                    </div>
+                    <img class="image-folder" draggable="false" *ngIf="document.type === DocumentType.FOLDER"
+                         src="assets/icon-files-types/folder.svg"
+                         alt="thumbnail">
+                    <mat-grid-tile-footer fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="center center">
+                        <img draggable="false" src="assets/icon-files-types/{{document.iconType}}.svg" alt="" width="20"
+                             height="20">
+                        <h3 class="label-truncate">{{document.name}}</h3>
+                    </mat-grid-tile-footer>
+                </mat-grid-tile>
+            </div>
+        </ng-container>
+    </mat-grid-list>
+</div>

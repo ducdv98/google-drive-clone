@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { DocumentModel, UserModel } from '@core/data/models';
+import { DocumentModel, DocumentType, UserModel } from '@core/data/models';
 
 const users: Array<UserModel> = [
   {
@@ -41,6 +41,8 @@ export class FileManagerService {
         lastModifiedDate: '1970-01-01T00:00:01.987Z',
         createdBy: users[0],
         lastModifiedBy: users[0],
+        iconType: 'word',
+        type: DocumentType.FILE,
       },
       {
         id: 730307,
@@ -51,6 +53,8 @@ export class FileManagerService {
         lastModifiedDate: '1970-01-01T00:00:01.985Z',
         createdBy: users[0],
         lastModifiedBy: users[0],
+        iconType: 'folder',
+        type: DocumentType.FOLDER,
       },
       {
         id: 110030,
@@ -61,6 +65,8 @@ export class FileManagerService {
         lastModifiedDate: '1970-01-01T00:00:02.004Z',
         createdBy: users[0],
         lastModifiedBy: users[0],
+        iconType: 'excel',
+        type: DocumentType.FILE,
       },
       {
         id: 954551,
@@ -72,6 +78,8 @@ export class FileManagerService {
         lastModifiedDate: '1970-01-01T00:00:02.004Z',
         createdBy: users[0],
         lastModifiedBy: users[0],
+        iconType: 'pdf',
+        type: DocumentType.FILE,
       }
     ];
     return of(documents);

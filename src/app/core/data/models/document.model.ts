@@ -1,5 +1,10 @@
 import { UserModel } from './user.model';
 
+export enum DocumentType {
+  FILE = 'FILE',
+  FOLDER = 'FOLDER',
+}
+
 export interface DocumentModel {
   id: number;
   name: string;
@@ -12,4 +17,6 @@ export interface DocumentModel {
   createdDate: string;
   lastModifiedBy: UserModel;
   lastModifiedDate: string;
+  iconType: string;
+  type: DocumentType;
 }

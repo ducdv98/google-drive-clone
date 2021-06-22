@@ -1,3 +1,10 @@
-<ng-container *ngIf="documents$ | async as documents">
-    <app-list-view [documents]="documents"></app-list-view>
-</ng-container>
+<div appFileDrop
+     class="w-100 h-100"
+     (fileDrop)="onFileDrop($event)"
+     (fileOver)="onFileOver($event)"
+     (fileLeave)="onFileLeave($event)">
+    <ng-container *ngIf="documents$ | async as documents">
+        <app-list-view [documents]="documents" *ngIf="(showAsGrid$ | async) === false"></app-list-view>
+        <app-grid-view [documents]="documents" *ngIf="(showAsGrid$ | async) === true"></app-grid-view>
+    </ng-container>
+</div>

@@ -16,6 +16,7 @@ export const _selectDocumentTotal = selectTotal;
 export const selectFileManagerState = createFeatureSelector<FileManagerState>('fileManager');
 export const selectFileManagerLoadingState = createSelector(selectFileManagerState, (state) => state.loadingState);
 export const selectFileManagerOpenDetailPanel = createSelector(selectFileManagerState, (state) => state.openDetailPanel);
+export const selectFileManagerShowAsGrid = createSelector(selectFileManagerState, (state) => state.showAsGrid);
 
 export const selectDocumentIds = createSelector(selectFileManagerState, _selectDocumentIds);
 export const selectDocumentEntities = createSelector(selectFileManagerState, _selectDocumentEntities);

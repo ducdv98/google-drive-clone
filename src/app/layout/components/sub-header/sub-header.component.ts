@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter, map, mergeMap } from 'rxjs/operators';
 import * as fromStore from '@core/store';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-sub-header',
@@ -11,6 +12,8 @@ import { Store } from '@ngrx/store';
 })
 export class SubHeaderComponent implements OnInit {
   title = '';
+
+  showAsGrid$: Observable<boolean>;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -30,10 +33,17 @@ export class SubHeaderComponent implements OnInit {
       filter(route => route.outlet === 'primary'),
       mergeMap(route => route.data)
     ).subscribe(data => this.title = data.title);
+
+
+    this.showAsGrid$ = this.store.pipe(select(fromStore.selectFileManagerShowAsGrid));
   }
 
   toggleDetailPanel(): void {
     this.store.dispatch(fromStore.toggleDetailPanel());
+  }
+
+  toggleShowAsGrid(): void {
+    this.store.dispatch(fromStore.toggleShowAsGrid());
   }
 
 }

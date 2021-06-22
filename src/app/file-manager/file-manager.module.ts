@@ -13,6 +13,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
+import { directives } from './directives';
+import { MatGridListModule } from '@angular/material/grid-list';
+
 const routes: Routes = [
   {
     path: '',
@@ -67,6 +70,7 @@ const routes: Routes = [
   declarations: [
     components,
     FileManagerContainerComponent,
+    directives,
   ],
   imports: [
     CommonModule,
@@ -81,6 +85,7 @@ const routes: Routes = [
     MatTableModule,
     MatSortModule,
     MatIconModule,
+    MatGridListModule,
   ],
 })
 export class FileManagerModule {

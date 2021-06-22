@@ -6,6 +6,7 @@ import { LOADING_STATE } from '@core/data/enums';
 const fileManagerReducers = createReducer(
   initialFileManagerState,
   on(actions.toggleDetailPanel, state => ({ ...state, openDetailPanel: !state.openDetailPanel })),
+  on(actions.toggleShowAsGrid, state => ({ ...state, showAsGrid: !state.showAsGrid })),
   on(actions.getDocuments, state => ({ ...state, loadingState: LOADING_STATE.LOADING })),
   on(actions.getDocumentsSuccess, (state, { documents }) => adapter.addMany(documents, { ...state, loadingState: LOADING_STATE.LOADED })),
   on(actions.getDocumentsError, (state, { error }) => ({ ...state, loadingState: LOADING_STATE.ERROR })),
