@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { LayoutService } from '@app/shared/services';
 import { DocumentModel, DocumentType } from '@core/data/models';
 import * as _ from 'lodash-es';
+import { KeyCode } from '@core/data/enums';
 
 @Component({
   selector: 'app-base',
@@ -15,6 +16,8 @@ export class BaseComponent implements OnInit {
 
   @Output() toggleDetails: EventEmitter<DocumentModel> = new EventEmitter();
   @Output() dragStart: EventEmitter<any> = new EventEmitter();
+  @Output() delete: EventEmitter<DocumentModel> = new EventEmitter();
+  @Output() deleteMany: EventEmitter<Array<DocumentModel>> = new EventEmitter();
 
   multiFiles: Array<DocumentModel> = [];
   filesDragging: Array<DocumentModel> = [];
@@ -31,6 +34,38 @@ export class BaseComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEventKeydown(event: KeyboardEvent): void {
+    if (event.keyCode === KeyCode.KEY_CTRL) {
+      this.isPressCtrl = true;
+      this.isPressShift = false;
+    }
+
+    if (event.keyCode === KeyCode.KEY_SHIFT) {
+      this.isPressShift = true;
+      this.isPressCtrl = false;
+    }
+  }
+
+  @HostListener('document:keyup', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent): void {
+    if (event.keyCode === KeyCode.KEY_DEL) {
+      const fileDelete = this.documents.find(doc => doc.id === this.selectedDocumentId);
+      if (this.selectedDocumentId) {
+        this.delete.emit(fileDelete);
+        return;
+      }
+      if (this.multiFiles.length > 0) {
+        this.deleteMany.emit(this.multiFiles);
+        return;
+      }
+    }
+    setTimeout(() => {
+      this.isPressCtrl = false;
+      this.isPressShift = false;
+    }, 100);
   }
 
   trackByFn(index: string | number, row: any): string {

@@ -1,0 +1,15 @@
+.suggested-container {
+  padding-top: 20px;
+
+  .title {
+    font-size: 15px;
+    font-weight: 500;
+    padding-bottom: 16px;
+  }
+
+  .suggested-list {
+    height: 189px;
+    display: flex;
+    padding-right: 64px;
+  }
+}

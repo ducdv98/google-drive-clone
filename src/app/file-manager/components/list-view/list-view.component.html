@@ -39,7 +39,7 @@
              'item-selected': selectedDocumentId === row.id && !multiFiles.includes(row),
              'dropable': row.type === DocumentType.FOLDER,
              'file-dragged': filesDragging && filesDragging.includes(row),
-             'select-multi': multiFiles.includes(row)
+             'select-many': multiFiles.includes(row)
              }"
                  (click)="onOpenAttachmentDetails(row, i, $event)"
                  (dblclick)="onOpenPreviewAttachment(row)"

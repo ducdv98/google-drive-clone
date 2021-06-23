@@ -122,7 +122,11 @@ a {
   }
 }
 
-.select-multi {
+.item-selected {
+  background-color: #e8f0fe;
+}
+
+.select-many {
   background: #e8f0fe;
 
   .mat-cell {

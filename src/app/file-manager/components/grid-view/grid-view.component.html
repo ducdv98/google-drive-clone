@@ -19,7 +19,7 @@
                                [attr.data-folder-id]="document.id"
                                [ngClass]="{'dropable': document.type === DocumentType.FOLDER,
                       'file-dragged': filesDragging && filesDragging.includes(document),
-                      'select-multi': multiFiles.includes(document)}">
+                      'select-many': multiFiles.includes(document)}">
                     <div class="thumbnail" *ngIf="document.type === DocumentType.FILE"
                          [style.background-image]="'url(' + document.thumbnail + ')'">
                     </div>
