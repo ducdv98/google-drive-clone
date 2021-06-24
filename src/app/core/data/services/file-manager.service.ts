@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { DocumentModel, DocumentType, UserModel } from '@core/data/models';
+import { IconType } from '@core/data/enums';
 
 const users: Array<UserModel> = [
   {
@@ -33,18 +34,6 @@ export class FileManagerService {
   getDocuments(): Observable<Array<DocumentModel>> {
     const documents: Array<DocumentModel> = [
       {
-        id: 964607,
-        name: 'DEA documents',
-        thumbnail: '',
-        createdDate: '1970-01-01T00:00:01.998Z',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        lastModifiedDate: '1970-01-01T00:00:01.987Z',
-        createdBy: users[0],
-        lastModifiedBy: users[0],
-        iconType: 'word',
-        type: DocumentType.FILE,
-      },
-      {
         id: 730307,
         name: 'Nulla lobortis',
         thumbnail: '',
@@ -53,8 +42,20 @@ export class FileManagerService {
         lastModifiedDate: '1970-01-01T00:00:01.985Z',
         createdBy: users[0],
         lastModifiedBy: users[0],
-        iconType: 'folder',
+        iconType: IconType.folder,
         type: DocumentType.FOLDER,
+      },
+      {
+        id: 964607,
+        name: 'DEA documents',
+        thumbnail: '',
+        createdDate: '1970-01-01T00:00:01.998Z',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        lastModifiedDate: '1970-01-01T00:00:01.987Z',
+        createdBy: users[0],
+        lastModifiedBy: users[0],
+        iconType: IconType.doc,
+        type: DocumentType.FILE,
       },
       {
         id: 110030,
@@ -65,20 +66,55 @@ export class FileManagerService {
         lastModifiedDate: '1970-01-01T00:00:02.004Z',
         createdBy: users[0],
         lastModifiedBy: users[0],
-        iconType: 'excel',
+        iconType: IconType.docx,
         type: DocumentType.FILE,
       },
       {
         id: 954551,
         name: 'Sed volutpat mi vel mauris',
         thumbnail: '',
-        mimeType: 'docx',
         createdDate: '1970-01-01T00:00:02.004Z',
         description: 'Lorem a felis sollicitudin, id laoreet mauris tincidunt',
         lastModifiedDate: '1970-01-01T00:00:02.004Z',
         createdBy: users[0],
         lastModifiedBy: users[0],
-        iconType: 'pdf',
+        iconType: IconType.pdf,
+        type: DocumentType.FILE,
+      },
+      {
+        id: 689645,
+        name: 'Sed volutpat mi vel mauris',
+        thumbnail: '',
+        createdDate: '1970-01-01T00:00:02.004Z',
+        description: 'Lorem a felis sollicitudin, id laoreet mauris tincidunt',
+        lastModifiedDate: '1970-01-01T00:00:02.004Z',
+        createdBy: users[0],
+        lastModifiedBy: users[0],
+        iconType: IconType.pdf,
+        type: DocumentType.FILE,
+      },
+      {
+        id: 453457,
+        name: 'Sed volutpat mi vel mauris',
+        thumbnail: '',
+        createdDate: '1970-01-01T00:00:02.004Z',
+        description: 'Lorem a felis sollicitudin, id laoreet mauris tincidunt',
+        lastModifiedDate: '1970-01-01T00:00:02.004Z',
+        createdBy: users[0],
+        lastModifiedBy: users[0],
+        iconType: IconType.pdf,
+        type: DocumentType.FILE,
+      },
+      {
+        id: 453455,
+        name: 'Sed volutpat mi vel mauris',
+        thumbnail: '',
+        createdDate: '1970-01-01T00:00:02.004Z',
+        description: 'Lorem a felis sollicitudin, id laoreet mauris tincidunt',
+        lastModifiedDate: '1970-01-01T00:00:02.004Z',
+        createdBy: users[0],
+        lastModifiedBy: users[0],
+        iconType: IconType.pdf,
         type: DocumentType.FILE,
       }
     ];

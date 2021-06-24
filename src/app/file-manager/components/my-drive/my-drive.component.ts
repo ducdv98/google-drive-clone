@@ -3,6 +3,7 @@ import * as fromStore from '@app/core/store';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { DocumentModel } from '@core/data/models';
+import { selectDocumentAction } from '@app/core/store';
 
 @Component({
   selector: 'app-my-drive',
@@ -11,6 +12,7 @@ import { DocumentModel } from '@core/data/models';
 })
 export class MyDriveComponent implements OnInit {
   documents$: Observable<Array<DocumentModel>>;
+  selectedDocument$: Observable<DocumentModel>;
 
   showAsGrid$: Observable<boolean>;
   detailPanelOpened$: Observable<boolean>;
@@ -20,13 +22,15 @@ export class MyDriveComponent implements OnInit {
   dropTarget: string;
 
   constructor(private store: Store<fromStore.AppState>) {
-    this.store.dispatch(fromStore.getDocuments());
+    this.store.dispatch(fromStore.getDocumentsAction());
   }
 
   ngOnInit(): void {
     this.documents$ = this.store.pipe(select(fromStore.selectAllDocuments));
     this.showAsGrid$ = this.store.pipe(select(fromStore.selectFileManagerShowAsGrid));
     this.detailPanelOpened$ = this.store.pipe(select(fromStore.selectFileManagerOpenDetailPanel));
+    // @ts-ignore
+    this.selectedDocument$ = this.store.pipe(select(fromStore.selectDocumentSelected));
 
     this.documents$.pipe().subscribe(documents => (this.documents = documents));
   }
@@ -52,4 +56,7 @@ export class MyDriveComponent implements OnInit {
   onFileLeave(event: any): void {
   }
 
+  onSelectDocument(documentId: number): void {
+    this.store.dispatch(fromStore.selectDocumentAction({ documentId }));
+  }
 }

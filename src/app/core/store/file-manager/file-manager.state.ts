@@ -6,6 +6,7 @@ export interface FileManagerState extends EntityState<DocumentModel> {
   loadingState: LoadingState;
   openDetailPanel: boolean;
   showAsGrid: boolean;
+  selectedDocumentId: number;
 }
 
 export const adapter: EntityAdapter<DocumentModel> = createEntityAdapter<DocumentModel>({});
@@ -14,5 +15,6 @@ export const initialFileManagerState = adapter.getInitialState({
   loadingState: LOADING_STATE.INIT,
   openDetailPanel: false,
   showAsGrid: false,
+  selectedDocumentId: -1,
 });
 

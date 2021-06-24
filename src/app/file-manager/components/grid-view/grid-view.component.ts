@@ -34,7 +34,7 @@ export class GridViewComponent extends BaseComponent implements OnInit, OnChange
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.openDetailPanel) {
+    if (changes.detailPanelOpened) {
       setTimeout(() => {
         this.updateNumberOfItemsPerRow();
       }, 200);

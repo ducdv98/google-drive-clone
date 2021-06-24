@@ -98,17 +98,17 @@ export class FileDropDirective {
 
   showPlaceholderElement(): void {
     if (this.added) {
-      document.querySelectorAll('.dropable .dropzone').forEach(element => {
+      document.querySelectorAll('.droppable .dropzone').forEach(element => {
         element.classList.add('show');
         element.classList.remove('hide');
       });
 
-      document.querySelectorAll('.dropable-root .dropzone').forEach(element => {
+      document.querySelectorAll('.droppable-root .dropzone').forEach(element => {
         element.classList.add('show');
         element.classList.remove('hide');
       });
     } else {
-      document.querySelectorAll('.dropable').forEach(element => {
+      document.querySelectorAll('.droppable').forEach(element => {
         const folderId = element.getAttribute('data-folder-id');
         const node = document.createElement('DIV');
         node.setAttribute('data-folder-id', folderId as string);
@@ -117,7 +117,7 @@ export class FileDropDirective {
         element.appendChild(node);
       });
 
-      const rootEl = document.querySelector('.dropable-root');
+      const rootEl = document.querySelector('.droppable-root');
 
       const rootFolderId = rootEl?.getAttribute('data-folder-id');
       const rootNode = document.createElement('DIV');
@@ -132,7 +132,7 @@ export class FileDropDirective {
   }
 
   hidePlaceholderElement(): void {
-    document.querySelectorAll('.dropable .dropzone, .dropable-root .dropzone').forEach(element => {
+    document.querySelectorAll('.droppable .dropzone, .droppable-root .dropzone').forEach(element => {
       element.remove();
     });
 

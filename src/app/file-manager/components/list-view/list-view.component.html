@@ -1,30 +1,30 @@
-<div class="list-container h-100 dropable-root" [attr.data-folder-id]="'root'">
+<div class="list-container h-100 droppable-root" [attr.data-folder-id]="'root'">
     <mat-table matSort [dataSource]="dataSource" [trackBy]="trackByFn" class="clickable">
         <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Name</mat-header-cell>
-            <mat-cell *matCellDef="let element" fxLayout="row" fxLayoutGap="12px">
+            <mat-header-cell fxFlex="45" *matHeaderCellDef mat-sort-header> Name</mat-header-cell>
+            <mat-cell fxFlex="50" *matCellDef="let element" fxLayout="row" fxLayoutGap="12px">
                 <img draggable="false" src="assets/icon-files-types/{{element.iconType}}.svg" width="20" height="20">
                 <span>{{element.name}}</span>
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="owner">
-            <mat-header-cell *matHeaderCellDef> Owner</mat-header-cell>
-            <mat-cell *matCellDef="let element">
+            <mat-header-cell fxFlex="20" *matHeaderCellDef> Owner</mat-header-cell>
+            <mat-cell fxFlex="20" *matCellDef="let element">
                 <span class="mat-caption">{{element.createdBy.name}}</span>
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="lastModified">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Last Modified</mat-header-cell>
-            <mat-cell mat-cell *matCellDef="let element">
+            <mat-header-cell fxFlex="25" *matHeaderCellDef mat-sort-header> Last Modified</mat-header-cell>
+            <mat-cell fxFlex="25" mat-cell *matCellDef="let element">
                 {{element.lastModifiedDate | date:'mediumDate'}} {{element.lastModifiedBy.name}}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="fileSize">
-            <mat-header-cell *matHeaderCellDef> File size</mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.fileSizeInBytes}} </mat-cell>
+            <mat-header-cell fxFlex="10" *matHeaderCellDef> File size</mat-header-cell>
+            <mat-cell fxFlex="10" *matCellDef="let element"> {{element.fileSizeInBytes}} </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
@@ -36,12 +36,12 @@
 
                  [attr.data-folder-id]="row.id"
                  [ngClass]="{
-             'item-selected': selectedDocumentId === row.id && !multiFiles.includes(row),
-             'dropable': row.type === DocumentType.FOLDER,
+             'selected': selectedDocument?.id === row.id && !multiFiles.includes(row),
+             'droppable': row.type === DocumentType.FOLDER,
              'file-dragged': filesDragging && filesDragging.includes(row),
              'select-many': multiFiles.includes(row)
              }"
-                 (click)="onOpenAttachmentDetails(row, i, $event)"
+                 (click)="onClick(row, i, $event)"
                  (dblclick)="onOpenPreviewAttachment(row)"
                  (contextmenu)="onContextMenu($event, row);"
                  [draggable]="true"

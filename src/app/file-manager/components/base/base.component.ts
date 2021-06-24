@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { LayoutService } from '@app/shared/services';
 import { DocumentModel, DocumentType } from '@core/data/models';
 import * as _ from 'lodash-es';
@@ -11,12 +11,11 @@ import { KeyCode } from '@core/data/enums';
 })
 export class BaseComponent implements OnInit {
   @Input() documents: Array<DocumentModel>;
-  @Input() selectedDocumentId: number;
   @Input() selectedDocument: DocumentModel;
   @Input() detailPanelOpened: boolean;
   @Input() dropTarget: string;
 
-  @Output() toggleDetail: EventEmitter<DocumentModel> = new EventEmitter();
+  @Output() selectDocument: EventEmitter<number> = new EventEmitter();
   @Output() dragStart: EventEmitter<any> = new EventEmitter();
   @Output() delete: EventEmitter<DocumentModel> = new EventEmitter();
   @Output() deleteMany: EventEmitter<Array<DocumentModel>> = new EventEmitter();
@@ -54,8 +53,8 @@ export class BaseComponent implements OnInit {
   @HostListener('document:keyup', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent): void {
     if (event.keyCode === KeyCode.KEY_DEL) {
-      const fileDelete = this.documents.find(doc => doc.id === this.selectedDocumentId);
-      if (this.selectedDocumentId) {
+      const fileDelete = this.documents.find(doc => doc.id === this.selectedDocument.id);
+      if (this.selectedDocument.id) {
         this.delete.emit(fileDelete);
         return;
       }
@@ -70,11 +69,8 @@ export class BaseComponent implements OnInit {
     }, 100);
   }
 
-  trackByFn(index: string | number, row: any): string {
-    return row.id || index;
-  }
 
-  onOpenAttachmentDetails(document: DocumentModel, index: number, e: MouseEvent): void {
+  onClick(document: DocumentModel, index: number, e: MouseEvent): void {
     if (e.detail > 1) {
       return;
     }
@@ -83,26 +79,26 @@ export class BaseComponent implements OnInit {
       this.isSingleClick = true;
       setTimeout(() => {
         if (this.isSingleClick && !this.isOpenContextMenu) {
-          this.toggleDetail.emit(document);
+          this.selectDocument.emit(document.id);
         }
       }, 50);
       return;
     }
 
     if (this.isPressCtrl) {
-      if (this.selectedDocument) {
+      if (this.selectedDocument && !this.multiFiles.includes(this.selectedDocument)) {
         this.multiFiles.push(this.selectedDocument);
       }
       if (this.multiFiles.includes(document)) {
         this.multiFiles = _.pull(this.multiFiles, document);
-        return;
+      } else {
+        this.multiFiles.push(document);
       }
-      this.multiFiles.push(document);
       return;
     }
 
+    // TODO: handle SHIFT key press
     if (this.selectedDocument) {
-      this.multiFiles.push(this.selectedDocument);
       this.selectFiles.start = this.documents.findIndex(at => at.id === this.selectedDocument.id);
     }
     if (this.multiFiles.length === 0) {
@@ -140,4 +136,7 @@ export class BaseComponent implements OnInit {
     this.multiFiles = [];
   }
 
+  trackByFn(index: string | number, row: any): string {
+    return row.id || index;
+  }
 }

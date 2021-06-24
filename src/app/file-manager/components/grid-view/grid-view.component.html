@@ -1,9 +1,9 @@
-<div class="dropable-root h-100 grid-container" [attr.data-folder-id]="'root'">
+<div class="droppable-root h-100 grid-container" [attr.data-folder-id]="'root'">
     <mat-grid-list [cols]="numberOfItemsPerRow" rowHeight="250px" gutterSize="15px" class="grid-container">
         <ng-container *ngFor="let document of documents; let i = index; trackBy: trackByFn">
             <div (contextmenu)="onContextMenu($event, document)"
-                 [ngClass]="{ 'item-selected': selectedDocumentId === document.id && !multiFiles.includes(document)}"
-                 (click)="onOpenAttachmentDetails(document, i, $event)"
+                 [ngClass]="{ 'selected': selectedDocument?.id === document.id && !multiFiles.includes(document)}"
+                 (click)="onClick(document, i, $event)"
                  (dblclick)="onOpenPreviewAttachment(document)"
 
                  appDragGhost
@@ -16,10 +16,13 @@
                  (dragend)="onDragEnd()">
                 <mat-grid-tile fxLayout="column" class="grid-item clickable"
                                fxLayoutAlign="none center"
-                               [attr.data-folder-id]="document.id"
-                               [ngClass]="{'dropable': document.type === DocumentType.FOLDER,
+                               [attr.data-folder-id]="document?.id"
+                               [ngClass]="{
+                      'droppable': document.type === DocumentType.FOLDER,
                       'file-dragged': filesDragging && filesDragging.includes(document),
-                      'select-many': multiFiles.includes(document)}">
+                      'select-many': multiFiles.includes(document),
+                      'selected': selectedDocument?.id === document.id
+                      }">
                     <div class="thumbnail w-100 h-100">
                     </div>
                     <mat-grid-tile-footer fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="start center">

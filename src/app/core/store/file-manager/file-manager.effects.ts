@@ -8,11 +8,11 @@ import { of } from 'rxjs';
 @Injectable()
 export class FileManagerEffects {
   getDocuments$ = createEffect(() => this.actions$.pipe(
-    ofType(actions.getDocuments),
+    ofType(actions.getDocumentsAction),
     mergeMap(() => this.fileManagerService.getDocuments()
       .pipe(
-        map(documents => actions.getDocumentsSuccess({ documents })),
-        catchError((error) => of(actions.getDocumentsError({ error })))
+        map(documents => actions.getDocumentsSuccessAction({ documents })),
+        catchError((error) => of(actions.getDocumentsErrorAction({ error })))
       ))
     )
   );

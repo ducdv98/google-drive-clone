@@ -37,11 +37,11 @@ a {
 
 
 
-.dropable-root {
+.droppable-root {
   position: relative;
 }
 
-.dropable {
+.droppable {
   position: relative;
 }
 
@@ -120,10 +120,6 @@ a {
     background: #abceeb63;
     margin: -8px;
   }
-}
-
-.item-selected {
-  background-color: #e8f0fe;
 }
 
 .select-many {

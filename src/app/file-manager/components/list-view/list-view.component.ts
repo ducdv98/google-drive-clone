@@ -25,6 +25,4 @@ export class ListViewComponent extends BaseComponent implements OnInit, OnChange
       this.dataSource = new MatTableDataSource<DocumentModel>(this.documents);
     }
   }
-
-
 }

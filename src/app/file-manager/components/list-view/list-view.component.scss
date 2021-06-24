@@ -1,25 +1,8 @@
 .list-container {
-  overflow: auto;
+  overflow: hidden;
   padding-right: 64px;
-}
 
-table {
-  width: 100%;
-
-  .mat-column-name {
-    width: 40%;
-  }
-
-  .mat-column-owner {
-    width: 25%;
-  }
-
-  .mat-column-lastModified {
-    width: 25%;
-  }
-
-  .mat-column-fileSize {
-    width: 10%;
+  .selected {
+    background-color: #e8f0fe;
   }
 }
-

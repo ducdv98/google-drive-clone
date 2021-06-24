@@ -1,4 +1,5 @@
 import { UserModel } from './user.model';
+import { IconType } from '@core/data/enums';
 
 export enum DocumentType {
   FILE = 'FILE',
@@ -8,7 +9,6 @@ export enum DocumentType {
 export interface DocumentModel {
   id: number;
   name: string;
-  mimeType?: string;
   thumbnail: string;
   description: string;
   fileSizeInBytes?: number;
@@ -16,6 +16,6 @@ export interface DocumentModel {
   createdDate: string;
   lastModifiedBy: UserModel;
   lastModifiedDate: string;
-  iconType: string;
+  iconType: IconType;
   type: DocumentType;
 }

@@ -39,11 +39,11 @@ export class SubHeaderComponent implements OnInit {
   }
 
   toggleDetailPanel(): void {
-    this.store.dispatch(fromStore.toggleDetailPanel());
+    this.store.dispatch(fromStore.toggleDetailPanelAction());
   }
 
   toggleShowAsGrid(): void {
-    this.store.dispatch(fromStore.toggleShowAsGrid());
+    this.store.dispatch(fromStore.toggleShowAsGridAction());
   }
 
 }

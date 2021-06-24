@@ -75,8 +75,10 @@ export class SuggestedListComponent implements OnInit, OnChanges {
     if (changes.detailPanelOpened) {
       if (this.detailPanelOpened) {
         this.numberOfItemsPerRow = 3;
+        this.el.nativeElement.children[0].style.width = 'calc(100% - 24px)';
       } else {
         this.numberOfItemsPerRow = 4;
+        this.el.nativeElement.children[0].style.width = 'calc(100% - 64px)';
       }
     }
   }
