@@ -4,7 +4,14 @@
      (fileOver)="onFileOver($event)"
      (fileLeave)="onFileLeave($event)">
     <ng-container *ngIf="documents$ | async as documents">
-        <app-list-view [documents]="documents" *ngIf="(showAsGrid$ | async) === false"></app-list-view>
-        <app-grid-view [documents]="documents" *ngIf="(showAsGrid$ | async) === true"></app-grid-view>
+        <app-list-view
+                [documents]="documents" *ngIf="(showAsGrid$ | async) === false"
+                [dropTarget]="dropTarget">
+        </app-list-view>
+        <app-grid-view
+                [documents]="documents" *ngIf="(showAsGrid$ | async) === true"
+                [detailPanelOpened]="(detailPanelOpened$ | async)!"
+                [dropTarget]="dropTarget">
+        </app-grid-view>
     </ng-container>
 </div>

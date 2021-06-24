@@ -1,9 +1,18 @@
 <div class="suggested-container">
     <div class="title">Suggested</div>
-    <div class="suggested-list w-100" fxLayoutGap="16px">
-        <app-suggested-item></app-suggested-item>
-        <app-suggested-item></app-suggested-item>
-        <app-suggested-item></app-suggested-item>
-        <app-suggested-item></app-suggested-item>
-    </div>
+    <mat-grid-list [cols]="numberOfItemsPerRow" rowHeight="190px" gutterSize="15px" class="suggested-items">
+        <ng-container *ngFor="let document of items; let i = index">
+            <mat-grid-tile fxLayout="column" class="suggested-item clickable"
+                           fxLayoutAlign="none center">
+                <div class="thumbnail" fxLayout="row" fxLayoutAlign="center center">
+                    <img src="assets/img/item-thumbnail/item_preview2.png">
+                </div>
+                <mat-grid-tile-footer fxLayout="column" fxLayoutGap="8px" fxLayoutAlign="center start"
+                                      class="suggested-item-footer">
+                    <div class="item-name">USB.LAN.R3453.rar</div>
+                    <div class="mat-caption">You opened in the pass week.</div>
+                </mat-grid-tile-footer>
+            </mat-grid-tile>
+        </ng-container>
+    </mat-grid-list>
 </div>

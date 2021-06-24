@@ -10,7 +10,6 @@ export interface DocumentModel {
   name: string;
   mimeType?: string;
   thumbnail: string;
-  file?: File | string;
   description: string;
   fileSizeInBytes?: number;
   createdBy: UserModel;

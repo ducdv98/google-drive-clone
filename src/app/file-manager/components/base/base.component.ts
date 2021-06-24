@@ -13,8 +13,10 @@ export class BaseComponent implements OnInit {
   @Input() documents: Array<DocumentModel>;
   @Input() selectedDocumentId: number;
   @Input() selectedDocument: DocumentModel;
+  @Input() detailPanelOpened: boolean;
+  @Input() dropTarget: string;
 
-  @Output() toggleDetails: EventEmitter<DocumentModel> = new EventEmitter();
+  @Output() toggleDetail: EventEmitter<DocumentModel> = new EventEmitter();
   @Output() dragStart: EventEmitter<any> = new EventEmitter();
   @Output() delete: EventEmitter<DocumentModel> = new EventEmitter();
   @Output() deleteMany: EventEmitter<Array<DocumentModel>> = new EventEmitter();
@@ -81,7 +83,7 @@ export class BaseComponent implements OnInit {
       this.isSingleClick = true;
       setTimeout(() => {
         if (this.isSingleClick && !this.isOpenContextMenu) {
-          this.toggleDetails.emit(document);
+          this.toggleDetail.emit(document);
         }
       }, 50);
       return;

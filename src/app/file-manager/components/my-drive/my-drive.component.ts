@@ -13,6 +13,11 @@ export class MyDriveComponent implements OnInit {
   documents$: Observable<Array<DocumentModel>>;
 
   showAsGrid$: Observable<boolean>;
+  detailPanelOpened$: Observable<boolean>;
+
+  documents: Array<DocumentModel>;
+
+  dropTarget: string;
 
   constructor(private store: Store<fromStore.AppState>) {
     this.store.dispatch(fromStore.getDocuments());
@@ -21,14 +26,27 @@ export class MyDriveComponent implements OnInit {
   ngOnInit(): void {
     this.documents$ = this.store.pipe(select(fromStore.selectAllDocuments));
     this.showAsGrid$ = this.store.pipe(select(fromStore.selectFileManagerShowAsGrid));
+    this.detailPanelOpened$ = this.store.pipe(select(fromStore.selectFileManagerOpenDetailPanel));
+
+    this.documents$.pipe().subscribe(documents => (this.documents = documents));
   }
 
   onFileDrop(itemDrop: any): void {
-
+    this.dropTarget = '';
   }
 
   onFileOver(itemOver: any): void {
-
+    const folderId = parseInt(itemOver, 0);
+    if (!itemOver) {
+      this.dropTarget = '';
+      return;
+    }
+    if (itemOver === 'root') {
+      this.dropTarget = 'My Drive';
+    } else {
+      const documentOver = this.documents.find(at => at.id === folderId);
+      this.dropTarget = !!documentOver ? documentOver.name : '';
+    }
   }
 
   onFileLeave(event: any): void {

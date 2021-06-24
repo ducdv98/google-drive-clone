@@ -1,0 +1,13 @@
+<div class="container-message" [ngClass]="{ 'visible': visible }">
+    <div fxLayout="column" fxLayoutAlign="center center">
+        <mat-icon class="icon-drop">cloud_upload</mat-icon>
+        <div class="message-drop"
+             fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="6px">
+            <span>{{ message }}</span>
+            <div class="content-message" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="4px">
+                <mat-icon>folder</mat-icon>
+                <span class="folder-name">{{ targetName || 'My Drive' }}</span>
+            </div>
+        </div>
+    </div>
+</div>

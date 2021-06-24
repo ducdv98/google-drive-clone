@@ -4,24 +4,24 @@ import { ListViewComponent } from './list-view/list-view.component';
 import { GridViewComponent } from './grid-view/grid-view.component';
 import { SuggestedListComponent } from './suggested-list/suggested-list.component';
 import { BaseComponent } from './base/base.component';
-import { SuggestedItemComponent } from './suggested-item/suggested-item.component';
+import { DropPlaceholderComponent } from './drop-placeholder/drop-placeholder.component';
 
 export const components = [
   MyDriveComponent,
   NotImplementedComponent,
   SuggestedListComponent,
-  SuggestedItemComponent,
   ListViewComponent,
   GridViewComponent,
   BaseComponent,
+  DropPlaceholderComponent,
 ];
 
 export {
   MyDriveComponent,
   NotImplementedComponent,
   SuggestedListComponent,
-  SuggestedItemComponent,
   ListViewComponent,
   GridViewComponent,
-  BaseComponent
+  BaseComponent,
+  DropPlaceholderComponent
 };

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SuggestedItemComponent } from './suggested-item.component';
+import { DropPlaceholderComponent } from './drop-placeholder.component';
 
-describe('SuggestedItemComponent', () => {
-  let component: SuggestedItemComponent;
-  let fixture: ComponentFixture<SuggestedItemComponent>;
+describe('DropPlaceholderComponent', () => {
+  let component: DropPlaceholderComponent;
+  let fixture: ComponentFixture<DropPlaceholderComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SuggestedItemComponent ]
+      declarations: [ DropPlaceholderComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SuggestedItemComponent);
+    fixture = TestBed.createComponent(DropPlaceholderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
