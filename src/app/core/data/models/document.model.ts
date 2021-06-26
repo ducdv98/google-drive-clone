@@ -11,11 +11,27 @@ export interface DocumentModel {
   name: string;
   thumbnail: string;
   description: string;
-  fileSizeInBytes?: number;
   createdBy: UserModel;
   createdDate: string;
   lastModifiedBy: UserModel;
   lastModifiedDate: string;
   iconType: IconType;
   type: DocumentType;
+}
+
+export interface ParentContainer {
+  id: number;
+  name: string;
+}
+
+export interface DocumentDetail {
+  documentId: number;
+  type: string;
+  parent: ParentContainer;
+  fileSizeInBytes: number;
+  owner: UserModel;
+  lastModifiedBy: UserModel;
+  lastModifiedDate: string;
+  createdDate: string;
+  description?: string;
 }

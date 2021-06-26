@@ -15,6 +15,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
 import { directives } from './directives';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatDividerModule } from '@angular/material/divider';
 
 const routes: Routes = [
   {
@@ -86,6 +88,8 @@ const routes: Routes = [
     MatSortModule,
     MatIconModule,
     MatGridListModule,
+    MatTabsModule,
+    MatDividerModule,
   ],
 })
 export class FileManagerModule {

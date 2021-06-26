@@ -1,0 +1,19 @@
+<div class="w-100 h-100 panel-container">
+    <div class="panel-header w-100" fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxLayout="row">
+            <mat-icon>folder_outline</mat-icon>
+            <div class="item-name">My Drive</div>
+        </div>
+        <button mat-icon-button (click)="onCloseDetailPanel()">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <mat-tab-group class="tabs" dynamicHeight>
+        <mat-tab label="Details">
+            <app-detail-tab></app-detail-tab>
+        </mat-tab>
+        <mat-tab label="Activity">
+            <app-activity-tab></app-activity-tab>
+        </mat-tab>
+    </mat-tab-group>
+</div>

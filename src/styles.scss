@@ -17,3 +17,16 @@ $file-manager-theme: mat.define-light-theme((
 ));
 
 @include mat.all-component-themes($file-manager-theme);
+
+
+.rounded-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+
+  img {
+    width: 100%;
+  }
+}

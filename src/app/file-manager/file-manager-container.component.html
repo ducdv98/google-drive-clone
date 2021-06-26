@@ -1,5 +1,7 @@
 <mat-drawer-container class="file-manager-container h-100" [hasBackdrop]="false">
-    <mat-drawer [opened]="detailPanelOpened$ | async" mode="side" position="end">I'm a drawer</mat-drawer>
+    <mat-drawer [opened]="detailPanelOpened$ | async" mode="side" position="end">
+        <app-detail-panel></app-detail-panel>
+    </mat-drawer>
     <mat-drawer-content class="file-manager-content" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="8px">
         <app-suggested-list class="w-100" [detailPanelOpened]="(detailPanelOpened$ | async)!"></app-suggested-list>
         <app-my-drive class="w-100 h-100"></app-my-drive>

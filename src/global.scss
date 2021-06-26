@@ -11,6 +11,38 @@ a {
   text-decoration: none;
 }
 
+::-webkit-scrollbar {
+  height: 16px;
+  overflow: visible;
+  width: 16px;
+}
+
+::-webkit-scrollbar-button {
+  height: 0;
+  width: 0;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+::-webkit-scrollbar-track {
+  background-clip: padding-box;
+  border: solid transparent;
+  border-width: 0 0 0 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,.2);
+  background-clip: padding-box;
+  border: solid transparent;
+  border-width: 1px 1px 1px 6px;
+  min-height: 28px;
+  padding: 100px 0 0;
+  -webkit-box-shadow: inset 1px 1px 0 rgb(0 0 0 / 10%), inset 0 -1px 0 rgb(0 0 0 / 7%);
+  box-shadow: inset 1px 1px 0 rgb(0 0 0 / 10%), inset 0 -1px 0 rgb(0 0 0 / 7%);
+}
+
 .main-container {
   mat-drawer {
     width: 256px;
@@ -33,8 +65,6 @@ a {
 .mat-list-base.sidenav-item .mat-list-item .mat-list-item-content {
   padding: 0 24px;
 }
-
-
 
 
 .droppable-root {
@@ -131,5 +161,21 @@ a {
 
   .label-truncate {
     color: #1967d2;
+  }
+}
+
+
+.panel-container {
+  .mat-tab-label {
+    min-width: 50%;
+    opacity: 1;
+  }
+
+  .mat-tab-label-active {
+    color: #4285f4;
+  }
+
+  .mat-ink-bar {
+    background-color: #4285f4 !important;
   }
 }
