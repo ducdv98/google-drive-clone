@@ -3,6 +3,7 @@
 
   .panel-header {
     padding: 20px 24px;
+    flex: 0 1 auto;
 
     .item-name {
       font-size: 22px;
@@ -10,4 +11,7 @@
     }
   }
 
+  .tabs {
+    flex: 1 1 auto;
+  }
 }

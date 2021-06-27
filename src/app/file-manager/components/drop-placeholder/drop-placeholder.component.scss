@@ -1,7 +1,7 @@
 .container-message {
   visibility: hidden;
-  position: absolute;
-  bottom: 2rem;
+  position: fixed;
+  bottom: 1rem;
   left: 50%;
   transform: translateX(-50%);
   transition: 0.1s visibility linear;

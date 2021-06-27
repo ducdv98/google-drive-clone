@@ -17,5 +17,11 @@
                        [dropTarget]="dropTarget"
                        (selectDocument)="onSelectDocument($event)">
         </app-grid-view>
+        <app-drop-placeholder [visible]="!!dropTarget"
+                              message="Drop files to instantly upload them to: "
+                              [targetName]="dropTarget"
+                              (dragover)="$event.preventDefault();"
+                              (drop)="$event.preventDefault();">
+        </app-drop-placeholder>
     </ng-container>
 </div>

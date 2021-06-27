@@ -1,4 +1,4 @@
-<div class="w-100 h-100 panel-container">
+<div class="w-100 h-100 panel-container" fxLayout="column">
     <div class="panel-header w-100" fxLayout="row" fxLayoutAlign="space-between center">
         <div fxLayout="row">
             <mat-icon>folder_outline</mat-icon>
@@ -8,7 +8,7 @@
             <mat-icon>close</mat-icon>
         </button>
     </div>
-    <mat-tab-group class="tabs" dynamicHeight>
+    <mat-tab-group class="tabs h-100" fxLayout="column">
         <mat-tab label="Details">
             <app-detail-tab></app-detail-tab>
         </mat-tab>
