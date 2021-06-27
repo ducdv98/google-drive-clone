@@ -24,9 +24,7 @@ a {
     .mat-list-base.sidenav-item .mat-list-item .mat-list-item-content {
       padding: 0 24px;
     }
-
   }
-
 
   .main-content {
     mat-drawer {
@@ -55,6 +53,30 @@ a {
 
 }
 
+
+.context-menu {
+  visibility: hidden;
+  position: fixed
+}
+
+.mat-menu-panel {
+  min-width: 320px !important;
+  max-height: 643px !important;
+
+  .mat-menu-content:not(:empty) {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  .mat-menu-item {
+    height: 32px;
+    line-height: 32px;
+  }
+
+  .mat-divider {
+    margin: 8px 0 7px 0;
+  }
+}
 
 .droppable-root {
   position: relative;

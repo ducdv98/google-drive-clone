@@ -1,8 +1,9 @@
-import { Component, EventEmitter, HostListener, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnChanges, OnInit, Output, ViewChild } from '@angular/core';
 import { LayoutService } from '@app/shared/services';
 import { DocumentModel, DocumentType } from '@core/data/models';
 import * as _ from 'lodash-es';
 import { KeyCode } from '@core/data/enums';
+import { MatMenuTrigger } from '@angular/material/menu';
 
 @Component({
   selector: 'app-base',
@@ -19,6 +20,11 @@ export class BaseComponent implements OnInit {
   @Output() dragStart: EventEmitter<any> = new EventEmitter();
   @Output() delete: EventEmitter<DocumentModel> = new EventEmitter();
   @Output() deleteMany: EventEmitter<Array<DocumentModel>> = new EventEmitter();
+
+  @ViewChild(MatMenuTrigger) contextMenu: MatMenuTrigger;
+
+  contextMenuDocument: DocumentModel;
+  contextMenuPosition = { x: '0px', y: '0px' };
 
   multiFiles: Array<DocumentModel> = [];
   filesDragging: Array<DocumentModel> = [];
@@ -118,10 +124,6 @@ export class BaseComponent implements OnInit {
 
   }
 
-  onContextMenu(event: MouseEvent, document: DocumentModel): void {
-
-  }
-
   onDragStartFile(event: DragEvent, document: DocumentModel): void {
     if (this.multiFiles.length > 0) {
       this.filesDragging = this.multiFiles;
@@ -138,5 +140,43 @@ export class BaseComponent implements OnInit {
 
   trackByFn(index: string | number, row: any): string {
     return row.id || index;
+  }
+
+  onPreviewButtonClicked(): void {
+
+  }
+
+  // Context menu
+  onOpenContextMenu(event: MouseEvent, document: DocumentModel): void {
+    event.preventDefault();
+    this.contextMenuPosition.x = event.clientX + 'px';
+    this.contextMenuPosition.y = event.clientY + 'px';
+    this.contextMenu.menuData = { document };
+
+    if (this.contextMenu.menuOpen) {
+      this.contextMenu.closeMenu();
+    }
+
+    this.openContextMenu(document);
+  }
+
+  openContextMenu(item: DocumentModel): void {
+    setTimeout(() => {
+      if (!this.contextMenu.menuOpen) {
+        this.contextMenu.openMenu();
+        this.contextMenuDocument = item;
+        this.isOpenContextMenu = true;
+        return;
+      }
+      this.openContextMenu(item);
+    }, 50);
+  }
+
+  onClickOutMenu(): void {
+    this.contextMenu.closeMenu();
+  }
+
+  onCloseContextMenu(): void {
+    this.isOpenContextMenu = false;
   }
 }

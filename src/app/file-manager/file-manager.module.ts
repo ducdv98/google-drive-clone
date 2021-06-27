@@ -18,6 +18,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatDividerModule } from '@angular/material/divider';
 import { ActivityItemComponent } from './components/detail-panel-tabs/activity-item/activity-item.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 const routes: Routes = [
   {
@@ -92,6 +93,7 @@ const routes: Routes = [
     MatGridListModule,
     MatTabsModule,
     MatDividerModule,
+    MatMenuModule,
   ],
 })
 export class FileManagerModule {

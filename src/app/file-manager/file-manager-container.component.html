@@ -2,8 +2,87 @@
     <mat-drawer [opened]="detailPanelOpened$ | async" mode="side" position="end">
         <app-detail-panel></app-detail-panel>
     </mat-drawer>
-    <mat-drawer-content class="file-manager-content" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="8px">
+    <mat-drawer-content class="file-manager-content" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="8px"
+                        (contextmenu)="onOpenContextMenu($event);">
         <app-suggested-list class="w-100" [detailPanelOpened]="(detailPanelOpened$ | async)!"></app-suggested-list>
         <app-my-drive class="w-100 h-100"></app-my-drive>
+
+<!--        <div class="context-menu"-->
+<!--             [style.left]="contextMenuPosition.x"-->
+<!--             [style.top]="contextMenuPosition.y"-->
+<!--             [matMenuTriggerFor]="contextMenu">-->
+<!--        </div>-->
+
+<!--        <mat-menu #contextMenu="matMenu" [overlapTrigger]="false"-->
+<!--                  (closed)="onCloseContextMenu()" hasBackdrop="false">-->
+<!--            <ng-template matMenuContent>-->
+<!--                <ng-container>-->
+<!--                    <button mat-menu-item>-->
+<!--                        <mat-icon>open_with</mat-icon>-->
+<!--                        Open with-->
+<!--                    </button>-->
+<!--                    <mat-divider></mat-divider>-->
+<!--                </ng-container>-->
+
+<!--                <ng-container>-->
+<!--                    <button mat-menu-item>-->
+<!--                        <mat-icon>person_add_alt</mat-icon>-->
+<!--                        Share-->
+<!--                    </button>-->
+<!--                    <button mat-menu-item>-->
+<!--                        <mat-icon>link</mat-icon>-->
+<!--                        Get link-->
+<!--                    </button>-->
+<!--                    <button mat-menu-item>-->
+<!--                        <mat-icon>folder_outline</mat-icon>-->
+<!--                        Show folder location-->
+<!--                    </button>-->
+<!--                    <button mat-menu-item>-->
+<!--                        <mat-icon>add_to_drive</mat-icon>-->
+<!--                        Add shortcut to Drive-->
+<!--                    </button>-->
+<!--                    <button mat-menu-item>-->
+<!--                        <mat-icon>drive_file_move_outline</mat-icon>-->
+<!--                        Move to-->
+<!--                    </button>-->
+<!--                    <button mat-menu-item>-->
+<!--                        <mat-icon>star_outline</mat-icon>-->
+<!--                        Add to Starred-->
+<!--                    </button>-->
+<!--                    <button mat-menu-item>-->
+<!--                        <mat-icon>drive_file_rename_outline</mat-icon>-->
+<!--                        Rename-->
+<!--                    </button>-->
+<!--                    <button mat-menu-item>-->
+<!--                        <mat-icon>palette_outline</mat-icon>-->
+<!--                        Change color-->
+<!--                    </button>-->
+<!--                    <button mat-menu-item>-->
+<!--                        <mat-icon>search</mat-icon>-->
+<!--                        Search within ...-->
+<!--                    </button>-->
+<!--                    <mat-divider></mat-divider>-->
+<!--                </ng-container>-->
+
+<!--                <ng-container>-->
+<!--                    <button mat-menu-item>-->
+<!--                        <mat-icon>info_outline</mat-icon>-->
+<!--                        View detail-->
+<!--                    </button>-->
+<!--                    <button mat-menu-item>-->
+<!--                        <mat-icon>download</mat-icon>-->
+<!--                        Download-->
+<!--                    </button>-->
+<!--                    <mat-divider></mat-divider>-->
+<!--                </ng-container>-->
+
+<!--                <ng-container>-->
+<!--                    <button mat-menu-item>-->
+<!--                        <mat-icon>delete_outline</mat-icon>-->
+<!--                        Remove-->
+<!--                    </button>-->
+<!--                </ng-container>-->
+<!--            </ng-template>-->
+<!--        </mat-menu>-->
     </mat-drawer-content>
 </mat-drawer-container>

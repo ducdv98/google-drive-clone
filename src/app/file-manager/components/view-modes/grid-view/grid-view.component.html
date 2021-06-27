@@ -1,7 +1,7 @@
 <div class="droppable-root h-100 grid-container" [attr.data-folder-id]="'root'">
     <mat-grid-list [cols]="numberOfItemsPerRow" rowHeight="250px" gutterSize="15px" class="grid-container">
         <ng-container *ngFor="let document of documents; let i = index; trackBy: trackByFn">
-            <div (contextmenu)="onContextMenu($event, document)"
+            <div (contextmenu)="onOpenContextMenu($event, document)"
                  [ngClass]="{ 'selected': selectedDocument?.id === document.id && !multiFiles.includes(document)}"
                  (click)="onClick(document, i, $event)"
                  (dblclick)="onOpenPreviewAttachment(document)"
@@ -35,3 +35,82 @@
         </ng-container>
     </mat-grid-list>
 </div>
+
+
+<div class="context-menu"
+     [style.left]="contextMenuPosition.x"
+     [style.top]="contextMenuPosition.y"
+     [matMenuTriggerFor]="contextMenu">
+</div>
+
+<mat-menu #contextMenu="matMenu" [overlapTrigger]="false"
+          (closed)="onCloseContextMenu()" hasBackdrop="false">
+    <ng-template matMenuContent>
+        <ng-container>
+            <button mat-menu-item>
+                <mat-icon>open_with</mat-icon>
+                Open with
+            </button>
+            <mat-divider></mat-divider>
+        </ng-container>
+
+        <ng-container>
+            <button mat-menu-item>
+                <mat-icon>person_add_alt</mat-icon>
+                Share
+            </button>
+            <button mat-menu-item>
+                <mat-icon>link</mat-icon>
+                Get link
+            </button>
+            <button mat-menu-item>
+                <mat-icon>folder_outline</mat-icon>
+                Show folder location
+            </button>
+            <button mat-menu-item>
+                <mat-icon>add_to_drive</mat-icon>
+                Add shortcut to Drive
+            </button>
+            <button mat-menu-item>
+                <mat-icon>drive_file_move_outline</mat-icon>
+                Move to
+            </button>
+            <button mat-menu-item>
+                <mat-icon>star_outline</mat-icon>
+                Add to Starred
+            </button>
+            <button mat-menu-item>
+                <mat-icon>drive_file_rename_outline</mat-icon>
+                Rename
+            </button>
+            <button mat-menu-item>
+                <mat-icon>palette_outline</mat-icon>
+                Change color
+            </button>
+            <button mat-menu-item>
+                <mat-icon>search</mat-icon>
+                Search within ...
+            </button>
+            <mat-divider></mat-divider>
+        </ng-container>
+
+        <ng-container>
+            <button mat-menu-item>
+                <mat-icon>info_outline</mat-icon>
+                View detail
+            </button>
+            <button mat-menu-item>
+                <mat-icon>download</mat-icon>
+                Download
+            </button>
+            <mat-divider></mat-divider>
+        </ng-container>
+
+        <ng-container>
+            <button mat-menu-item>
+                <mat-icon>delete_outline</mat-icon>
+                Remove
+            </button>
+        </ng-container>
+    </ng-template>
+</mat-menu>
