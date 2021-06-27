@@ -1,0 +1,38 @@
+.activity-item {
+  border-bottom: 1px solid #dadce0;
+  margin: 0 0 12px;
+  padding: 16px;
+  position: relative;
+
+  .time-stamp {
+    color: #5f6368;
+    padding-bottom: 12px;
+  }
+
+  .activity-desc {
+    color: #5f6368;
+  }
+
+  .activity-footer {
+    margin-top: 16px;
+
+    .mat-icon {
+      font-size: 21px;
+      height: 21px;
+      width: 21px;
+      color: #5f6368;
+      border-radius: 50%;
+      border: 3px solid #5f6368;
+    }
+
+    .target {
+      color: #5f6368;
+      font-weight: 500;
+    }
+
+    .permission {
+      color: #5f6368;
+      font-weight: 300;
+    }
+  }
+}
